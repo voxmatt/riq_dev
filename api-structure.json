@@ -1,0 +1,24 @@
+{
+  "superSection":{
+    "title":"API",
+    "directoryPath":"",
+    "section": {
+      "title": "introduction",
+      "directoryPath":"",
+      "description": "Markdown code",
+      "examples":{
+        "curl":"curl code",
+        "ruby":"ruby code"
+      },
+      "subSection":{
+        "title": "introduction",
+        "directoryPath":"",
+        "description": "Markdown code",
+        "examples":{
+          "curl":"curl code",
+          "ruby":"ruby code"
+        }
+      }
+    }
+  }
+}
