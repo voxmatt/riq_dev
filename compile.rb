@@ -33,7 +33,7 @@ $api_text = '{'
 # This is needed for the tabbing and for closing tags
 def directory_depth(file, startDir)
 
-  relPath = File.absolute_path(file).split(startDir)[1]
+  relPath = File.expand_path(file).split(startDir)[1]
   depth = relPath.split("/").length - 1
   return depth
 
@@ -72,13 +72,13 @@ def add_api_info(directory)
       $api_text += new_line + "subSection\":{" if depth == 3
 
       $api_text += "\n" + ("\t" * (depth+1)) + "\"" + "title\":\"#{File.basename(filename).gsub(/^\d\d-/, '').gsub('-', ' ')}\","
-      $api_text += "\n" + ("\t" * (depth+1)) + "\"" + "directoryPath\":\"#{File.absolute_path(filename)}\","
+      $api_text += "\n" + ("\t" * (depth+1)) + "\"" + "directoryPath\":\"#{File.expand_path(filename)}\","
 
     # Now we check if the file is a description file
     elsif File.basename(filename).split(".")[0] == "description"
       
       $api_text += new_line + "description\":\""
-      $api_text += File.absolute_path(filename).split($docDir)[1]
+      $api_text += File.expand_path(filename).split($docDir)[1]
       $api_text += "\","
 
     # Next we look at the example files
@@ -91,7 +91,7 @@ def add_api_info(directory)
       end
 
       $api_text += "\"" 
-      $api_text += File.absolute_path(filename).split($docDir)[1]
+      $api_text += File.expand_path(filename).split($docDir)[1]
       $api_text += "\","
 
     end
