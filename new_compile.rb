@@ -42,12 +42,14 @@ end
 # This is the meet and potatoes of the script
 def add_api_info(directory)
 
-  # Need two variables to track how we're moving in the directory tree
-  depth = 1
-  depth1 = 1
-
   # Move into the directory
   Dir.chdir directory
+
+  # Add first two lines
+  $api_text += "\n\"superSections\":[\n{"
+  # Need a few variables to track how we're moving in the directory tree
+  depth = 1
+  depth1 = 1
 
   # Move recursively through all files and directories
   Dir.glob("**/**/**/**/*").each do |filename|
@@ -57,23 +59,34 @@ def add_api_info(directory)
 
     # This checks if we've moved back in the directory tree
     # and closes the tag if we have
-    while depth < depth1
-      $api_text = $api_text[0...-1]
-      $api_text += "\n" + ("\t" * depth1) + "},"
+    if depth < depth1
+      if depth1 - depth == 1
+        $api_text = $api_text[0...-1]
+        $api_text += "\n},"
+      elsif depth1 - depth == 2
+        $api_text = $api_text[0...-1]
+        $api_text += "\n}\n]\n}\n],"
+      elsif depth1 - depth == 3
+        $api_text = $api_text[0...-1]
+        $api_text += "\n}\n]\n},"
+      end
       depth1 = depth1 - 1
     end
-    new_line = "\n" + ("\t" * depth) + "\""
+    new_line = "\n" + "\""
 
     # If it's a directory, it signals a new section
     # so we need particular keys in the JSON file
     if File.directory? filename
 
-      $api_text += new_line + "superSection\":{" if depth == 1
-      $api_text += new_line + "section\":{" if depth == 2
-      $api_text += new_line + "subSection\":{" if depth == 3
+      if File.basename(filename)[0..1] == "01"
+        $api_text += new_line + "sections\":[\n{" if depth == 2
+        $api_text += new_line + "subSections\":[\n{" if depth == 3
+      else
+        $api_text += "\n{"
+      end
 
-      $api_text += "\n" + ("\t" * (depth+1)) + "\"" + "title\":\"#{File.basename(filename).gsub(/^\d\d-/, '').gsub('-', ' ')}\","
-      $api_text += "\n" + ("\t" * (depth+1)) + "\"" + "directoryPath\":\"#{File.expand_path(filename)}\","
+      $api_text += "\n" + "\"" + "title\":\"#{File.basename(filename).gsub(/^\d\d-/, '').gsub('-', ' ')}\","
+      $api_text += "\n" + "\"" + "directoryPath\":\"#{File.expand_path(filename)}\","
 
     # Now we check if the file is a description file
     elsif File.basename(filename).split(".")[0] == "description"
@@ -102,12 +115,13 @@ def add_api_info(directory)
   end
 
   # This closes all the tags at the end of the file
+  $api_text = $api_text[0...-1]
   while depth > 1
-    $api_text = $api_text[0...-1]
-    $api_text += "\n" + ("\t" * (depth-1)) + "},"
+    $api_text += "\n}"
+    $api_text += "\n]" if depth.odd?
     depth = depth - 1
   end
-  $api_text += "\n" + "}"
+  $api_text += "\n]\n}"
 
 end
 
