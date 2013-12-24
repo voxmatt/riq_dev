@@ -1,0 +1,25 @@
+DEFINITION
+GET https://app.relateiq.com/api/v1/entitylists/{listid}/search?name=[name to find]
+
+EXAMPLE REQUEST
+curl -X GET https://app.relateiq.com/api/v1/entitylists/3ebd05233434b301d30b6788/search?name=techqueria \
+  -u apitoken:[apitoken]
+
+EXAMPLE RESPONSE
+{
+    result: {[{
+            "id": "3ebd05233434b301d30b6788",
+            "memberName": "Techqueria",
+            "fieldValuess": [...],
+            ...
+        }
+    ]},
+    success: true
+}
+
+EXAMPLE ERROR
+{
+    result: {}
+    message: "must specify a query (e.g. name=techqueria)"
+    success: false
+}

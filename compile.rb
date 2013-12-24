@@ -1,7 +1,3 @@
-require 'rubygems'
-require 'json'
-
-
 ##############
 ## SETTINGS ##
 ##############

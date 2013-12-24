@@ -1,0 +1,41 @@
+{
+  "superSections":[
+    {
+      "title":"API",
+      "directoryPath":"/Users/matt/Desktop/Code/riq_dev/documentation/01-API",
+      "sections":[
+        {
+          "title":"entity lists",
+          "directoryPath":"/Users/matt/Desktop/Code/riq_dev/documentation/01-API/01-entity-lists",
+          "subSections":[
+            {
+              "title":"get lists",
+              "directoryPath":"/Users/matt/Desktop/Code/riq_dev/documentation/01-API/01-entity-lists/01-get-lists",
+              "description":"/01-API/01-entity-lists/01-get-lists/description.markdown",
+              "curl":"/01-API/01-entity-lists/01-get-lists/example.curl"
+            },
+            {
+              "title":"search relationships",
+              "directoryPath":"/Users/matt/Desktop/Code/riq_dev/documentation/01-API/01-entity-lists/02-search-relationships",
+              "description":"/01-API/01-entity-lists/02-search-relationships/description.markdown",
+              "curl":"/01-API/01-entity-lists/02-search-relationships/example.curl"
+            }
+          ]
+        }
+      ],
+      "description":"filepath",
+      "ruby":"example filepath"
+    },
+    {
+      "title":"Methods",
+      "directoryPath":"/Users/matt/Desktop/Code/riq_dev/documentation/02-Methods",
+      "sections":[
+        {
+          "title":"new thing",
+          "directoryPath":"/Users/matt/Desktop/Code/riq_dev/documentation/02-Methods/01-new-thing",
+          "description":"/02-Methods/01-new-thing/description.markdown"
+        }
+      ]
+    }
+  ]
+}    

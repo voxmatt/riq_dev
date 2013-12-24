@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html lang="en-US" ng-app="riqDevApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RelateIQ API Reference</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="app/css/main.css">
+
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.0.2/angular.min.js"></script>
+  <script type="text/javascript" src="app/js/app.js"></script>
+</head>
+<body ng-controller="ListCtrl">
+
+  <nav class="navbar navbar-default" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">RelateIQ</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active">
+          <a href="#">Developer Docs</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="#">Sign In</a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </nav>
+
+  <div class="col-sm-3">
+    <!--Body content-->
+    <input class="form-control" ng-model="query">
+
+    <div ng-repeat="superSection in docs.superSections | filter:query">
+      {{ superSection.title }}
+      <ul class="sections">
+        <li ng-repeat="section in superSection.sections | filter:query">
+          {{ section.title }}
+          <ul>
+            <li ng-repeat="subSection in section.subSections | filter:query">
+              {{ subSection.title }}
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="col-sm-9">
+    <div ng-repeat="superSection in docs.superSections">
+      <div ng-if="superSection.description" class="row">
+        <div class="col-sm-6">
+          {{ superSection.description }}
+        </div>
+        <div class="col-sm-6">
+          <div ng-if="superSection.ruby != '' ">
+            {{ superSection.ruby }}
+          </div>
+          <div ng-if="superSection.curl != '' ">
+            {{ superSection.curl }}
+          </div>
+        </div>
+      </div>
+
+      <div ng-repeat="section in superSection.sections">
+        
+        <div ng-if="section.description" class="row">
+          <div class="col-sm-6">
+            {{ section.description }}
+          </div>
+          <div class="col-sm-6">
+            <div ng-if="section.ruby != '' ">
+              {{ section.ruby }}
+            </div>
+            <div ng-if="section.curl != '' ">
+              {{ section.curl }}
+            </div>
+          </div>
+        </div>
+
+        <div ng-show="section.subSections != '' ">
+
+          <div ng-repeat="subSection in section.subSections" class="row">
+            <div class="col-sm-6">
+              {{ subSection.description }}
+            </div>
+            <div class="col-sm-6">
+              <div ng-if="subSection.ruby != '' ">
+                {{ subSection.ruby }}
+              </div>
+              <div ng-if="subSection.curl != '' ">
+                {{ subSection.curl }}
+              </div>
+            </div>
+        </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
