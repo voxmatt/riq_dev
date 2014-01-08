@@ -1,3 +1,5 @@
+require 'json'
+
 ##############
 ## SETTINGS ##
 ##############
@@ -14,7 +16,6 @@ $languages = [
 ]
 
 
-
 ##################
 ## SCRIPT START ##
 ##################
@@ -22,18 +23,26 @@ $languages = [
 $rootDir = Dir.pwd
 
 # First, let's preserve the old api file in case something goes wrong
-File.delete "api_old.json" if File.exist?("api_old.json")
-File.rename "api.json", "api_old.json" if File.exist?("api.json")
+File.delete "app/data/docs_old.json" if File.exist?("app/data/docs_old.json")
+File.rename "app/data/docs.json", "app/data/docs_old.json" if File.exist?("app/data/docs.json")
 
 def build_api_map(depth, currdir)
   Dir.chdir currdir
 
   #depth = directory_depth(currdir, topdir)
   map = {}
-  
+
+  if depth == 0
+    map[:languages] = []
+    $languages.each do |l|
+      map[:languages].push(l[0])
+    end
+  end
+
   if depth > 0
     map[:title] = File.basename(currdir).gsub(/^\d\d-/, '').gsub('-', ' ')
-    map[:directoryPath] = File.expand_path(currdir)
+    map[:link] = File.basename(currdir).gsub(/^\d\d-/, '').downcase
+    map[:directoryPath] = $docDir + File.expand_path(currdir).split($docDir)[1]
   end
 
   
@@ -58,7 +67,7 @@ def build_api_map(depth, currdir)
     # Now we check if the file is a description file
     elsif File.basename(filename).split(".")[0] == "description"
       puts "desc"
-      map[:description] = File.expand_path(filename).split($docDir)[1]
+      map[:description] = $docDir + File.expand_path(filename).split($docDir)[1]
 
     # Next we look at the example files
     elsif File.basename(filename).split(".")[0] == "example"
@@ -71,7 +80,7 @@ def build_api_map(depth, currdir)
         $lang_key = lang[0] if fileExt == lang[1]
       end
 
-      map[$lang_key] = File.expand_path(filename).split($docDir)[1]
+      map[$lang_key] = $docDir + File.expand_path(filename).split($docDir)[1]
 
     end
 
@@ -88,6 +97,6 @@ $api_hash = build_api_map(0, $docDir)
 
 # Then we move back to the root directory and write the JSON file
 Dir.chdir $rootDir
-File.open("api.json", "w+") do |file|
+File.open("app/data/docs.json", "w+") do |file|
   file.write(JSON.pretty_generate($api_hash))
 end

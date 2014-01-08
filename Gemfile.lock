@@ -10,7 +10,7 @@ GEM
     css_parser (1.3.5)
       addressable
     fssm (0.2.10)
-    rack (1.5.2)
+    json (1.8.1)
     sass (3.2.13)
 
 PLATFORMS
@@ -19,4 +19,4 @@ PLATFORMS
 DEPENDENCIES
   compass
   css_parser
-  rack (~> 1.5)
+  json

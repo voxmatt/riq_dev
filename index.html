@@ -4,11 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RelateIQ API Reference</title>
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="app/css/main.css">
 
-  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.0.2/angular.min.js"></script>
+  <!-- jquery, angular, fonts -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
+  <script type="text/javascript" src="app/js/angular-route.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600' rel='stylesheet' type='text/css'>
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+  <!-- prettify -->
+  <script type="text/javascript" src="app/js/prettify.js"></script>
+  <link rel="stylesheet" type="text/css" href="app/css/tomorrow-night-eighties.css" />
+
+  <!-- app -->
+
+  <link rel="stylesheet" type="text/css" href="app/css/main.css">
   <script type="text/javascript" src="app/js/app.js"></script>
+
+
+
 </head>
 <body ng-controller="ListCtrl">
 
@@ -21,94 +38,125 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">RelateIQ</a>
+      <a class="navbar-brand" href="#">
+        <img class="logo" src="app/img/logo-relateiq-app.png">
+        <span class="logo-text">Dev</span>
+      </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active">
-          <a href="#">Developer Docs</a>
-        </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <a href="#">Sign In</a>
+          <a href="#">documentation</a>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </nav>
 
-  <div class="col-sm-3">
-    <!--Body content-->
-    <input class="form-control" ng-model="query">
-
-    <div ng-repeat="superSection in docs.superSections | filter:query">
-      {{ superSection.title }}
-      <ul class="sections">
-        <li ng-repeat="section in superSection.sections | filter:query">
-          {{ section.title }}
-          <ul>
-            <li ng-repeat="subSection in section.subSections | filter:query">
-              {{ subSection.title }}
+  <aside>
+    <div data-spy="affix" data-offset-top="50">
+      <div class="form-container">
+        <input class="form-control" ng-model="query" placeholder="Search API sections">
+      </div>
+      <div ng-repeat="superSection in docs.superSections | filter:query">
+        <div ng-if="superSection.sections">
+          <label>
+            {{ superSection.title }}
+          </label>
+          <ul class="sections nav">
+            <li ng-repeat="section in superSection.sections | filter:query">
+              <a href="" ng-click="scrollTo(section.link)">
+                {{ section.title }}
+              </a>
+              <ul class="subsections nav" ng-if="section.subSections">
+                <li ng-repeat="subSection in section.subSections | filter:query">
+                  <a href="" ng-click="scrollTo(subSection.link)">
+                    {{ subSection.title }}
+                  </a>
+                </li>
+              </ul>
             </li>
           </ul>
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
 
-  </div>
+  </aside>
 
-  <div class="col-sm-9">
-    <div ng-repeat="superSection in docs.superSections">
-      <div ng-if="superSection.description" class="row">
-        <div class="col-sm-6">
-          {{ superSection.description }}
+  <main>
+    <div class="main-container">
+      <div class="row code-nav-row">
+        <div class="col-xs-6">
         </div>
-        <div class="col-sm-6">
-          <div ng-if="superSection.ruby != '' ">
-            {{ superSection.ruby }}
-          </div>
-          <div ng-if="superSection.curl != '' ">
-            {{ superSection.curl }}
-          </div>
+        <div class="col-xs-6 code-nav">
+          <ul class="nav nav-pills" data-spy="affix" data-offset-top="50">
+            <li ng-repeat="language in docs.languages" ng-class="{active: langSlug() == language }">
+              <a ng-href="/#/{{language}}">
+                {{language}}
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
 
-      <div ng-repeat="section in superSection.sections">
-        
-        <div ng-if="section.description" class="row">
-          <div class="col-sm-6">
-            {{ section.description }}
+      <div class="super-section" ng-repeat="superSection in docs.superSections">
+        <div ng-if="superSection.description" id="{{superSection.link}}" class="row">
+
+          <div class="desc-col col-xs-6">
+            <div ng-include="superSection.description"></div>
           </div>
-          <div class="col-sm-6">
-            <div ng-if="section.ruby != '' ">
-              {{ section.ruby }}
-            </div>
-            <div ng-if="section.curl != '' ">
-              {{ section.curl }}
-            </div>
+
+          <div class="code-col col-xs-6">
+            <pre class="prettyprint" ng-if="superSection[langSlug()] != '' " ng-include="superSection[langSlug()]"></pre>
+            &nbsp;
           </div>
+
+          <div class="clearfix"></div>
+
         </div>
 
-        <div ng-show="section.subSections != '' ">
+        <div class="section" ng-repeat="section in superSection.sections">
+          
+          <div id="{{section.link}}" class="row">
+            
+            <div class="desc-col col-xs-6">
+              <h1>{{ section.title }}</h1>
+              <div ng-include="section.description"></div>
+            </div>
 
-          <div ng-repeat="subSection in section.subSections" class="row">
-            <div class="col-sm-6">
-              {{ subSection.description }}
+            <div class="code-col col-xs-6">
+              <pre class="prettyprint" ng-if="section[langSlug()] != '' " ng-include="section[langSlug()]"></pre>
+              &nbsp;
             </div>
-            <div class="col-sm-6">
-              <div ng-if="subSection.ruby != '' ">
-                {{ subSection.ruby }}
+
+            <div class="clearfix"></div>
+
+          </div>
+
+          <div ng-show="section.subSections != '' ">
+
+            <div class="sub-section" ng-repeat="subSection in section.subSections" id="{{subSection.link}}" class="row">
+              
+              <div class="desc-col col-xs-6">
+                <h2>{{ subSection.title }}</h2>
+                <div ng-include="subSection.description"></div>
               </div>
-              <div ng-if="subSection.curl != '' ">
-                {{ subSection.curl }}
+
+              <div class="code-col col-xs-6">
+                <pre class="prettyprint" ng-if="subSection[langSlug()] != '' " ng-include="subSection[langSlug()]"></pre>
+                &nbsp;
               </div>
+
+              <div class="clearfix"></div>
+
             </div>
+          </div>
+
         </div>
-
+      </div>
     </div>
-  </div>
-
+  </main>
+  <div class="clearfix"></div>
 </body>
 </html>

@@ -1,6 +1,11 @@
-### Arguments
--------------
-<dl>
+<p>
+  What search relationships are for...
+</p>
+
+<div class="page-header">
+  <h3>Arguments</h3>
+</div>
+<dl class="dl-horizontal">
   <dt>
     listids
   </dt>
