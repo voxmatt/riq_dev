@@ -1,0 +1,26 @@
+HTTP Status Codes
+200 Ok - normal successful request
+400 Bad Request - normally a missing or malformatted parameter
+401 Unauthorized - missing credentials
+403 Forbidden - provided token does not have access for that method
+404 Not Found - requested object does not exist
+422 Unprocessable Entity - often the posted object is malformatted
+429 Too Many Requests - exceeded rate limits 
+500 Internal Server Error - an unexpected error on the RelateIQ side
+503 Service Unavailable - likely a deploy is occuring, wait 2 minutes and retry
+
+
+GET https://api.relateiq.com/api/v2/lists
+
+REQUEST EXAMPLE
+curl -X GET https://api.relateiq.com/api/v2/lists
+  -u [apitoken-public]:[apitoken-secret]
+
+EXAMPLE ERROR
+HTTP/1.1 404 NOT FOUND
+{
+  "statusCode": 400,
+  "errorMessage": "List not found",
+  "userMessage": "List not found"
+}
+

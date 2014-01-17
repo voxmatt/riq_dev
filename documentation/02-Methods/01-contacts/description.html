@@ -1,0 +1,36 @@
+<p>
+Contacts represent people in an address book.  They generally have contact information (name, phone number, email, etc) and can be linked to relationships.
+</p>
+
+<div class="page-header">
+  <h3>Contact Object</h3>
+</div>
+<dl class="dl-horizontal">
+  <dt>
+    id
+  </dt>
+  <dd>
+    <p>
+    Unique contact identifier
+    </p>
+  </dd>
+  <dt>
+    addressBookId
+  </dt>
+  <dd>
+    <em>required</em>
+    <p>
+    Which address book this contact belongs to.
+    </p>
+  </dd>
+  <dt>
+    properties
+  </dt>
+  <dd>
+    <p>
+    An array of property objects where the types are (name, email, phone, etc) and the values are the actual values (e.g. test@example.com)
+    </p>
+  </dd>
+</dl>
+
+

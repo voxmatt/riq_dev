@@ -1,0 +1,35 @@
+<p>
+The RelateIQ uses HTTP status codes to describe errors. In general, 200 is for successful requests, 4xx are errors with requests, and 5xx are unexpected server errors.
+<br/>
+On error requests, the API returns a JSON object with more details.
+</p>
+
+<div class="page-header">
+  <h3>Error object attributes</h3>
+</div>
+<dl class="dl-horizontal">
+  <dt>
+    statusCode
+  </dt>
+  <dd>
+    <p>
+    Same as the HTTP status code
+    </p>
+  </dd>
+  <dt>
+    errorMessage
+  </dt>
+  <dd>
+    <p>
+    An error message to help the developer understand the problem
+    </p>
+  </dd>
+  <dt>
+    userMessage
+  </dt>
+  <dd>
+    <p>
+    An error message to for the end-user.  (Not always descriptive for the user)
+    </p>
+  </dd>
+</dl>

@@ -1,0 +1,15 @@
+ENDPOINT
+GET https://api.relateiq.com/api/v2/contacts
+
+REQUEST EXAMPLE
+curl -X GET https://api.relateiq.com/api/v2/contacts?addressbookId=blah
+  -u [apitoken-public]:[apitoken-secret]
+
+EXAMPLE RESPONSE
+HTTP/1.1 200 OK
+{
+  "objects": [ array of contacts ],
+  "nextPage": "url",
+  "prevPage": "url",
+}
+
