@@ -9,7 +9,7 @@ riqDevApp.controller('ListCtrl', function($scope, $http, $location, $anchorScrol
   });
 
   // Get URL slug
-  $scope.langSlug = function(){ 
+  var langSlug = function(){ 
     var path = $location.path().substr(1);
     if (path == ""){
       return "curl";
@@ -17,6 +17,10 @@ riqDevApp.controller('ListCtrl', function($scope, $http, $location, $anchorScrol
       return path;
     }
   };
+
+  $scope.$watch(langSlug, function(newLangSlug){ 
+    $scope.langSlug = newLangSlug; 
+  });
 
 
   // Scroll to anchor

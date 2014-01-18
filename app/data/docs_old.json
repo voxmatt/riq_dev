@@ -2,10 +2,7 @@
   "languages": [
     "curl",
     "ruby",
-    "python",
-    "php",
-    "java",
-    "node"
+    "python"
   ],
   "superSections": [
     {
@@ -32,7 +29,8 @@
               "description": "documentation/01-API/01-entity-lists/02-search-relationships/description.markdown",
               "curl": "documentation/01-API/01-entity-lists/02-search-relationships/example.curl"
             }
-          ]
+          ],
+          "description": "documentation/01-API/01-entity-lists/description.html"
         }
       ],
       "description": "documentation/01-API/description.html",

@@ -8,11 +8,7 @@ $docDir = "documentation"
 # 2 Languages supported - language followed by file extension
 $languages = [
   ["curl", "curl"],
-  ["ruby", "rb"],
-  ["python", "py"],
-  ["php", "php"],
-  ["java", "java"],
-  ["node", "node"]
+  ["ruby", "rb"]
 ]
 
 

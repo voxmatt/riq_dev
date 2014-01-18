@@ -91,7 +91,7 @@
         </div>
         <div class="col-xs-6 code-nav">
           <ul class="nav nav-pills" data-spy="affix" data-offset-top="50">
-            <li ng-repeat="language in docs.languages" ng-class="{active: langSlug() == language }">
+            <li ng-repeat="language in docs.languages" ng-class="{active: langSlug == language }">
               <a ng-href="/#/{{language}}">
                 {{language}}
               </a>
@@ -108,7 +108,7 @@
           </div>
 
           <div class="code-col col-xs-6">
-            <pre class="prettyprint" ng-if="superSection[langSlug()] != '' " ng-include="superSection[langSlug()]"></pre>
+            <pre class="prettyprint" ng-if="superSection[langSlug] != '' " ng-include="superSection[langSlug]"></pre>
             &nbsp;
           </div>
 
@@ -126,7 +126,7 @@
             </div>
 
             <div class="code-col col-xs-6">
-              <pre class="prettyprint" ng-if="section[langSlug()] != '' " ng-include="section[langSlug()]"></pre>
+              <pre class="prettyprint" ng-if="section[langSlug] != '' " ng-include="section[langSlug]"></pre>
               &nbsp;
             </div>
 
@@ -144,7 +144,7 @@
               </div>
 
               <div class="code-col col-xs-6">
-                <pre class="prettyprint" ng-if="subSection[langSlug()] != '' " ng-include="subSection[langSlug()]"></pre>
+                <pre class="prettyprint" ng-if="subSection[langSlug] != '' " ng-include="subSection[langSlug]"></pre>
                 &nbsp;
               </div>
 

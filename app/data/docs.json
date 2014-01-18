@@ -1,11 +1,7 @@
 {
   "languages": [
     "curl",
-    "ruby",
-    "python",
-    "php",
-    "java",
-    "node"
+    "ruby"
   ],
   "superSections": [
     {
