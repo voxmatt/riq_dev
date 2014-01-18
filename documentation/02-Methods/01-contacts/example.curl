@@ -1,0 +1,10 @@
+{
+  "id": "thisisanid",
+  "addressBookId": "addressbook1",
+  "properties": [
+    {
+      "type": "email",
+      "value": "test@example.com"
+    }
+  ]
+}

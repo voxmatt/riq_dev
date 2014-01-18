@@ -10,26 +10,65 @@
       "directoryPath": "documentation/01-API/01-API",
       "sections": [
         {
-          "title": "entity lists",
-          "link": "entity-lists",
-          "directoryPath": "documentation/01-API/01-entity-lists/01-entity-lists",
+          "title": "introduction",
+          "link": "introduction",
+          "directoryPath": "documentation/01-API/01-introduction/01-introduction",
           "subSections": [
             {
-              "title": "get lists",
-              "link": "get-lists",
-              "directoryPath": "documentation/01-API/01-entity-lists/01-get-lists/01-get-lists",
-              "description": "documentation/01-API/01-entity-lists/01-get-lists/description.html",
-              "curl": "documentation/01-API/01-entity-lists/01-get-lists/example.curl"
+              "title": "versioning",
+              "link": "versioning",
+              "directoryPath": "documentation/01-API/01-introduction/01-versioning/01-versioning",
+              "description": "documentation/01-API/01-introduction/01-versioning/description.html"
             },
             {
-              "title": "search relationships",
-              "link": "search-relationships",
-              "directoryPath": "documentation/01-API/01-entity-lists/02-search-relationships/02-search-relationships",
-              "description": "documentation/01-API/01-entity-lists/02-search-relationships/description.markdown",
-              "curl": "documentation/01-API/01-entity-lists/02-search-relationships/example.curl"
+              "title": "questions",
+              "link": "questions",
+              "directoryPath": "documentation/01-API/01-introduction/02-questions/02-questions",
+              "description": "documentation/01-API/01-introduction/02-questions/description.html"
             }
           ],
-          "description": "documentation/01-API/01-entity-lists/description.html"
+          "description": "documentation/01-API/01-introduction/description.html"
+        },
+        {
+          "title": "authentication",
+          "link": "authentication",
+          "directoryPath": "documentation/01-API/02-authentication/02-authentication",
+          "subSections": [
+            {
+              "title": "requesting access",
+              "link": "requesting-access",
+              "directoryPath": "documentation/01-API/02-authentication/01-requesting-access/01-requesting-access",
+              "description": "documentation/01-API/02-authentication/01-requesting-access/description.html"
+            },
+            {
+              "title": "making requests",
+              "link": "making-requests",
+              "directoryPath": "documentation/01-API/02-authentication/02-making-requests/02-making-requests",
+              "description": "documentation/01-API/02-authentication/02-making-requests/description.html",
+              "curl": "documentation/01-API/02-authentication/02-making-requests/example.curl"
+            }
+          ],
+          "description": "documentation/01-API/02-authentication/description.html"
+        },
+        {
+          "title": "rate limits",
+          "link": "rate-limits",
+          "directoryPath": "documentation/01-API/03-rate-limits/03-rate-limits",
+          "subSections": [
+
+          ],
+          "description": "documentation/01-API/03-rate-limits/description.html",
+          "curl": "documentation/01-API/03-rate-limits/example.curl"
+        },
+        {
+          "title": "errors",
+          "link": "errors",
+          "directoryPath": "documentation/01-API/04-errors/04-errors",
+          "subSections": [
+
+          ],
+          "description": "documentation/01-API/04-errors/description.html",
+          "curl": "documentation/01-API/04-errors/example.curl"
         }
       ],
       "description": "documentation/01-API/description.html",
@@ -42,13 +81,20 @@
       "directoryPath": "documentation/02-Methods/02-Methods",
       "sections": [
         {
-          "title": "new thing",
-          "link": "new-thing",
-          "directoryPath": "documentation/02-Methods/01-new-thing/01-new-thing",
+          "title": "contacts",
+          "link": "contacts",
+          "directoryPath": "documentation/02-Methods/01-contacts/01-contacts",
           "subSections": [
-
+            {
+              "title": "get collection",
+              "link": "get-collection",
+              "directoryPath": "documentation/02-Methods/01-contacts/01-get-collection/01-get-collection",
+              "description": "documentation/02-Methods/01-contacts/01-get-collection/description.html",
+              "curl": "documentation/02-Methods/01-contacts/01-get-collection/example.curl"
+            }
           ],
-          "description": "documentation/02-Methods/01-new-thing/description.markdown"
+          "description": "documentation/02-Methods/01-contacts/description.html",
+          "curl": "documentation/02-Methods/01-contacts/example.curl"
         }
       ]
     },

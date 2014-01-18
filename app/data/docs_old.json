@@ -1,115 +1,316 @@
 {
+<<<<<<< HEAD
+  "languages": [
+    "curl",
+    "ruby"
+  ],
+||||||| merged common ancestors
   "languages": [
     "curl",
     "ruby",
-    "python"
+    "python",
+    "php",
+    "java",
+    "node"
   ],
+=======
+>>>>>>> 5a5c5cef078b6f4e5153052676b14712f3805e45
   "superSections": [
     {
       "title": "API",
-      "link": "api",
+      "description": "documentation/01-API/description.html",
       "directoryPath": "documentation/01-API/01-API",
+      "link": "api",
       "sections": [
         {
-          "title": "entity lists",
-          "link": "entity-lists",
-          "directoryPath": "documentation/01-API/01-entity-lists/01-entity-lists",
+          "title": "introduction",
+          "description": "documentation/01-API/01-introduction/description.html",
+          "directoryPath": "documentation/01-API/01-introduction/01-introduction",
+          "link": "introduction",
           "subSections": [
             {
-              "title": "get lists",
-              "link": "get-lists",
-              "directoryPath": "documentation/01-API/01-entity-lists/01-get-lists/01-get-lists",
-              "description": "documentation/01-API/01-entity-lists/01-get-lists/description.html",
-              "curl": "documentation/01-API/01-entity-lists/01-get-lists/example.curl"
+              "title": "versioning",
+              "description": "documentation/01-API/01-introduction/01-versioning/description.html",
+              "directoryPath": "documentation/01-API/01-introduction/01-versioning/01-versioning",
+              "link": "versioning"
             },
             {
-              "title": "search relationships",
-              "link": "search-relationships",
-              "directoryPath": "documentation/01-API/01-entity-lists/02-search-relationships/02-search-relationships",
-              "description": "documentation/01-API/01-entity-lists/02-search-relationships/description.markdown",
-              "curl": "documentation/01-API/01-entity-lists/02-search-relationships/example.curl"
+              "title": "questions",
+              "description": "documentation/01-API/01-introduction/02-questions/description.html",
+              "directoryPath": "documentation/01-API/01-introduction/02-questions/02-questions",
+              "link": "questions"
             }
-          ],
-          "description": "documentation/01-API/01-entity-lists/description.html"
+          ]
+        },
+        {
+          "title": "authentication",
+          "description": "documentation/01-API/02-authentication/description.html",
+          "directoryPath": "documentation/01-API/02-authentication/02-authentication",
+          "link": "authentication",
+          "subSections": [
+            {
+              "title": "requesting access",
+              "description": "documentation/01-API/02-authentication/01-requesting-access/description.html",
+              "directoryPath": "documentation/01-API/02-authentication/01-requesting-access/01-requesting-access",
+              "link": "requesting-access"
+            },
+            {
+              "title": "making requests",
+              "description": "documentation/01-API/02-authentication/02-making-requests/description.html",
+              "directoryPath": "documentation/01-API/02-authentication/02-making-requests/02-making-requests",
+              "link": "making-requests",
+              "curl": "documentation/01-API/02-authentication/02-making-requests/example.curl"
+            }
+          ]
+        },
+        {
+          "title": "rate limits",
+          "description": "documentation/01-API/03-rate-limits/description.html",
+          "directoryPath": "documentation/01-API/03-rate-limits/03-rate-limits",
+          "link": "rate-limits",
+          "curl": "documentation/01-API/03-rate-limits/example.curl",
+          "subSections": [
+
+          ]
+        },
+        {
+          "title": "errors",
+          "description": "documentation/01-API/04-errors/description.html",
+          "directoryPath": "documentation/01-API/04-errors/04-errors",
+          "link": "errors",
+          "curl": "documentation/01-API/04-errors/example.curl",
+          "subSections": [
+
+          ]
         }
       ],
-      "description": "documentation/01-API/description.html",
-      "curl": "documentation/01-API/example.curl",
-      "ruby": "documentation/01-API/example.rb"
+      "ruby": "documentation/01-API/example.rb",
+      "curl": "documentation/01-API/example.curl"
     },
     {
       "title": "Methods",
-      "link": "methods",
       "directoryPath": "documentation/02-Methods/02-Methods",
+      "link": "methods",
       "sections": [
         {
-          "title": "new thing",
-          "link": "new-thing",
-          "directoryPath": "documentation/02-Methods/01-new-thing/01-new-thing",
+          "title": "contacts",
+          "description": "documentation/02-Methods/01-contacts/description.html",
+          "directoryPath": "documentation/02-Methods/01-contacts/01-contacts",
+          "link": "contacts",
+          "curl": "documentation/02-Methods/01-contacts/example.curl",
           "subSections": [
-
-          ],
-          "description": "documentation/02-Methods/01-new-thing/description.markdown"
+            {
+              "title": "get collection",
+              "description": "documentation/02-Methods/01-contacts/01-get-collection/description.html",
+              "directoryPath": "documentation/02-Methods/01-contacts/01-get-collection/01-get-collection",
+              "link": "get-collection",
+              "curl": "documentation/02-Methods/01-contacts/01-get-collection/example.curl"
+            },
+            {
+              "title": "get one",
+              "directoryPath": "documentation/02-Methods/01-contacts/02-get-one/02-get-one",
+              "link": "get-one"
+            },
+            {
+              "title": "create one",
+              "directoryPath": "documentation/02-Methods/01-contacts/03-create-one/03-create-one",
+              "link": "create-one"
+            },
+            {
+              "title": "update one",
+              "directoryPath": "documentation/02-Methods/01-contacts/04-update-one/04-update-one",
+              "link": "update-one"
+            },
+            {
+              "title": "delete one",
+              "directoryPath": "documentation/02-Methods/01-contacts/05-delete-one/05-delete-one",
+              "link": "delete-one"
+            },
+            {
+              "title": "upsert many",
+              "directoryPath": "documentation/02-Methods/01-contacts/06-upsert-many/06-upsert-many",
+              "link": "upsert-many"
+            }
+          ]
+        },
+        {
+          "title": "contact notes",
+          "directoryPath": "documentation/02-Methods/02-contact-notes/02-contact-notes",
+          "link": "contact-notes",
+          "subSections": [
+            {
+              "title": "get collection",
+              "directoryPath": "documentation/02-Methods/02-contact-notes/01-get-collection/01-get-collection",
+              "link": "get-collection"
+            },
+            {
+              "title": "get one",
+              "directoryPath": "documentation/02-Methods/02-contact-notes/02-get-one/02-get-one",
+              "link": "get-one"
+            },
+            {
+              "title": "create one",
+              "directoryPath": "documentation/02-Methods/02-contact-notes/03-create-one/03-create-one",
+              "link": "create-one"
+            },
+            {
+              "title": "update one",
+              "directoryPath": "documentation/02-Methods/02-contact-notes/04-update-one/04-update-one",
+              "link": "update-one"
+            },
+            {
+              "title": "delete one",
+              "directoryPath": "documentation/02-Methods/02-contact-notes/05-delete-one/05-delete-one",
+              "link": "delete-one"
+            },
+            {
+              "title": "upsert many",
+              "directoryPath": "documentation/02-Methods/02-contact-notes/06-upsert-many/06-upsert-many",
+              "link": "upsert-many"
+            }
+          ]
+        },
+        {
+          "title": "accounts",
+          "directoryPath": "documentation/02-Methods/03-accounts/03-accounts",
+          "link": "accounts",
+          "subSections": [
+            {
+              "title": "get collection",
+              "directoryPath": "documentation/02-Methods/03-accounts/01-get-collection/01-get-collection",
+              "link": "get-collection"
+            },
+            {
+              "title": "get one",
+              "directoryPath": "documentation/02-Methods/03-accounts/02-get-one/02-get-one",
+              "link": "get-one"
+            },
+            {
+              "title": "create one",
+              "directoryPath": "documentation/02-Methods/03-accounts/03-create-one/03-create-one",
+              "link": "create-one"
+            },
+            {
+              "title": "update one",
+              "directoryPath": "documentation/02-Methods/03-accounts/04-update-one/04-update-one",
+              "link": "update-one"
+            },
+            {
+              "title": "delete one",
+              "directoryPath": "documentation/02-Methods/03-accounts/05-delete-one/05-delete-one",
+              "link": "delete-one"
+            },
+            {
+              "title": "upsert many",
+              "directoryPath": "documentation/02-Methods/03-accounts/06-upsert-many/06-upsert-many",
+              "link": "upsert-many"
+            }
+          ]
+        },
+        {
+          "title": "account notes",
+          "directoryPath": "documentation/02-Methods/04-account-notes/04-account-notes",
+          "link": "account-notes",
+          "subSections": [
+            {
+              "title": "get collection",
+              "directoryPath": "documentation/02-Methods/04-account-notes/01-get-collection/01-get-collection",
+              "link": "get-collection"
+            },
+            {
+              "title": "get one",
+              "directoryPath": "documentation/02-Methods/04-account-notes/02-get-one/02-get-one",
+              "link": "get-one"
+            },
+            {
+              "title": "create one",
+              "directoryPath": "documentation/02-Methods/04-account-notes/03-create-one/03-create-one",
+              "link": "create-one"
+            },
+            {
+              "title": "update one",
+              "directoryPath": "documentation/02-Methods/04-account-notes/04-update-one/04-update-one",
+              "link": "update-one"
+            },
+            {
+              "title": "delete one",
+              "directoryPath": "documentation/02-Methods/04-account-notes/05-delete-one/05-delete-one",
+              "link": "delete-one"
+            },
+            {
+              "title": "upsert many",
+              "directoryPath": "documentation/02-Methods/04-account-notes/06-upsert-many/06-upsert-many",
+              "link": "upsert-many"
+            }
+          ]
         }
       ]
     },
     {
       "title": "NEW",
-      "link": "new",
+      "description": "documentation/03-NEW/description.markdown",
       "directoryPath": "documentation/03-NEW/03-NEW",
+      "link": "new",
       "sections": [
         {
           "title": "entity lists",
-          "link": "entity-lists",
           "directoryPath": "documentation/03-NEW/01-entity-lists/01-entity-lists",
+          "link": "entity-lists",
           "subSections": [
             {
               "title": "get lists",
-              "link": "get-lists",
-              "directoryPath": "documentation/03-NEW/01-entity-lists/01-get-lists/01-get-lists",
               "description": "documentation/03-NEW/01-entity-lists/01-get-lists/description.markdown",
+              "directoryPath": "documentation/03-NEW/01-entity-lists/01-get-lists/01-get-lists",
+              "link": "get-lists",
               "curl": "documentation/03-NEW/01-entity-lists/01-get-lists/example.curl"
             },
             {
               "title": "search relationships",
-              "link": "search-relationships",
-              "directoryPath": "documentation/03-NEW/01-entity-lists/02-search-relationships/02-search-relationships",
               "description": "documentation/03-NEW/01-entity-lists/02-search-relationships/description.markdown",
+              "directoryPath": "documentation/03-NEW/01-entity-lists/02-search-relationships/02-search-relationships",
+              "link": "search-relationships",
               "curl": "documentation/03-NEW/01-entity-lists/02-search-relationships/example.curl"
             }
           ]
         },
         {
           "title": "new lists",
-          "link": "new-lists",
           "directoryPath": "documentation/03-NEW/02-new-lists/02-new-lists",
+          "link": "new-lists",
           "subSections": [
             {
               "title": "get lists",
-              "link": "get-lists",
-              "directoryPath": "documentation/03-NEW/02-new-lists/01-get-lists/01-get-lists",
               "description": "documentation/03-NEW/02-new-lists/01-get-lists/description.markdown",
+              "directoryPath": "documentation/03-NEW/02-new-lists/01-get-lists/01-get-lists",
+              "link": "get-lists",
               "curl": "documentation/03-NEW/02-new-lists/01-get-lists/example.curl"
             },
             {
               "title": "search relationships",
-              "link": "search-relationships",
-              "directoryPath": "documentation/03-NEW/02-new-lists/02-search-relationships/02-search-relationships",
               "description": "documentation/03-NEW/02-new-lists/02-search-relationships/description.markdown",
+              "directoryPath": "documentation/03-NEW/02-new-lists/02-search-relationships/02-search-relationships",
+              "link": "search-relationships",
               "curl": "documentation/03-NEW/02-new-lists/02-search-relationships/example.curl"
             },
             {
               "title": "get lists",
-              "link": "get-lists",
-              "directoryPath": "documentation/03-NEW/02-new-lists/03-get-lists/03-get-lists",
               "description": "documentation/03-NEW/02-new-lists/03-get-lists/description.markdown",
+              "directoryPath": "documentation/03-NEW/02-new-lists/03-get-lists/03-get-lists",
+              "link": "get-lists",
               "curl": "documentation/03-NEW/02-new-lists/03-get-lists/example.curl"
             }
           ]
         }
       ],
-      "description": "documentation/03-NEW/description.markdown",
       "ruby": "documentation/03-NEW/example.rb"
     }
+  ],
+  "languages": [
+    "curl",
+    "ruby",
+    "python",
+    "php",
+    "java",
+    "node"
   ]
 }

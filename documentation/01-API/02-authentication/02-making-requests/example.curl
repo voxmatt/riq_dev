@@ -1,0 +1,12 @@
+GET https://api.relateiq.com/api/v2/lists
+
+REQUEST EXAMPLE
+curl -X GET https://api.relateiq.com/api/v2/lists
+  -u [apitoken-public]:[apitoken-secret]
+
+
+
+
+REQUEST EXAMPLE
+curl -X GET https://api.relateiq.com/api/v2/lists
+  -H "Authorization: [apitoken-public]:[apitoken-secret]"

@@ -1,0 +1,15 @@
+
+GET https://api.relateiq.com/api/v2/lists/thisisnotathing
+
+REQUEST EXAMPLE
+curl -X GET https://api.relateiq.com/api/v2/lists/thisisnotathing
+  -u [apitoken-public]:[apitoken-secret]
+
+EXAMPLE ERROR
+HTTP/1.1 429 Too Many Requests
+{
+  "statusCode": 429,
+  "errorMessage": "Exceeded rate limit",
+  "userMessage": "This app is making too many requests to RelateIQ"
+}
+
