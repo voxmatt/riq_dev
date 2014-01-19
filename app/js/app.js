@@ -1,29 +1,38 @@
-var riqDevApp = angular.module('riqDevApp', [ 'ngRoute']);
+// Set up app and disable anchorScroll b/c it breaks the scroll spy
+var riqDevApp = angular.module('riqDevApp', [ 'ngRoute']).value('$anchorScroll', angular.noop);
 
 // CONTROLLERS
 riqDevApp.controller('ListCtrl', function($scope, $http, $location, $anchorScroll, $routeParams) {
 
+  // Default language
+  $defaultLang = "curl";
+
   // Load data
-  $http.get('app/data/docs.json').success(function(data) {
+  $http.get('app/data/docs.json', { cache: true}).success(function(data) {
     $scope.docs = data;
+    // After docs load, check if they're navigating to a supporeted language, if not, send them to the default
+    var path = $location.path().substr(1);
+    if ( $.inArray(path, data.languages) == -1 ){
+      $location.path($defaultLang); 
+    }
   });
 
-  // Get URL slug
+  // Get URL slug and set page language
   var langSlug = function(){ 
     var path = $location.path().substr(1);
-    if (path == ""){
-      return "curl";
+    if ( path == "" ){
+      return $defaultLang;
     } else {
       return path;
     }
   };
 
-  // watch for changes in the url
+  // watch for changes in the page language and return to scope
   $scope.$watch(langSlug, function(newLangSlug){ 
     $scope.langSlug = newLangSlug; 
   });
 
-  // Hijacking the links to maintain page location
+  // Hijacking the links to maintain page location hash
   $scope.langChange = function(language){
     $location.path(language);
     $scope.langSlug = language;
@@ -31,8 +40,10 @@ riqDevApp.controller('ListCtrl', function($scope, $http, $location, $anchorScrol
 
   // Set scroll and nav after the last template is loaded if url contains a hash
   $scope.lastLoad = function(last) {
-    if (last){
-      $anchorScroll();    
+    if (last && $location.hash()){
+      elem = "#" + $location.hash();
+      $("body, html").scrollTop($(elem).offset().top);
+      $("#sideNav li[scroll-to = " + $location.hash() + "]").addClass("active");
     }
   }
 
@@ -85,7 +96,7 @@ riqDevApp.directive('scrollSpy', function($window) {
           spy.out();
           spyElems[spy.id] = spyElems[spy.id].length === 0 ? elem.find('#' + spy.id) : spyElems[spy.id];
           if (spyElems[spy.id].length !== 0) {
-            if ((pos = spyElems[spy.id].offset().top) - $window.scrollY <= 0) {
+            if ((pos = spyElems[spy.id].offset().top) - $window.scrollY <= 100) {
               spy.pos = pos;
               if (highlightSpy == null) {
                 highlightSpy = spy;
@@ -112,9 +123,8 @@ riqDevApp.directive('scrollTo', function($location) {
         attrs.spyClass = "active";
       }
       elem.click(function() {
-        scope.$apply(function() {
-          $location.hash(attrs.scrollTo);
-        });
+        console.log("Scrolled to" + attrs.scrollTo);
+        $("body, html").scrollTop($("#" + attrs.scrollTo).offset().top);
       });
       scrollSpy.addSpy({
         id: attrs.scrollTo,
