@@ -135,12 +135,13 @@ aside{
     list-style:none;
     font-weight:400;
     text-transform: capitalize;
-    a{
+    li{
       display:block;
       padding:5px 15px;
       color: #4B4156;
-      &:hover{
-        color: darken(#4B4156, 40%);
+      &:hover,
+      &.active{
+        color: red;
       }
     }
     &>li>ul{

@@ -9,7 +9,8 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
   <script type="text/javascript" src="app/js/angular-route.min.js"></script>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="app/js/angular-ui.min.js"></script>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600' rel='stylesheet' type='text/css'>
 
   <!-- bootstrap -->
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
@@ -27,7 +28,7 @@
 
 
 </head>
-<body ng-controller="ListCtrl">
+<body ng-controller="ListCtrl" id="scroller" scroll-spy>
 
   <nav class="navbar navbar-default" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -59,32 +60,27 @@
       <div class="form-container">
         <input class="form-control" ng-model="query" placeholder="Search API sections">
       </div>
-      <div ng-repeat="superSection in docs.superSections | filter:query">
-        <div ng-if="superSection.sections">
-          <label>
+
+      <ul id="sideNav" class="nav nav-pills nav-stacked">
+        <div ng-repeat="superSection in docs.superSections | filter:query" ng-if="superSection.sections">
+          <li ng-class="{active:$first}" scroll-to="{{superSection.link}}">
             {{ superSection.title }}
-          </label>
-          <ul class="sections nav">
-            <li ng-repeat="section in superSection.sections | filter:query">
-              <a href="" ng-click="scrollTo(section.link)">
-                {{ section.title }}
-              </a>
-              <ul class="subsections nav" ng-if="section.subSections">
-                <li ng-repeat="subSection in section.subSections | filter:query">
-                  <a href="" ng-click="scrollTo(subSection.link)">
-                    {{ subSection.title }}
-                  </a>
-                </li>
-              </ul>
+          </li>
+          <div ng-repeat="section in superSection.sections | filter:query">
+            <li scroll-to="{{section.link}}">
+              {{ section.title }}
             </li>
-          </ul>
+            <li ng-if="section.subSections" ng-repeat="subSection in section.subSections | filter:query" scroll-to="{{subSection.link}}">
+              {{ subSection.title }}
+            </li>
+          </div>
         </div>
-      </div>
+      </ul>
     </div>
 
   </aside>
 
-  <main>
+  <main check-load>
     <div class="main-container">
       <div class="row code-nav-row">
         <div class="col-xs-6">
@@ -92,7 +88,7 @@
         <div class="col-xs-6 code-nav">
           <ul class="nav nav-pills" data-spy="affix" data-offset-top="50">
             <li ng-repeat="language in docs.languages" ng-class="{active: langSlug == language }">
-              <a ng-href="/#/{{language}}">
+              <a ng-click="langChange(language)">
                 {{language}}
               </a>
             </li>
@@ -140,7 +136,7 @@
               
               <div class="desc-col col-xs-6">
                 <h2>{{ subSection.title }}</h2>
-                <div ng-include="subSection.description"></div>
+                <div ng-include="subSection.description" onload="lastLoad($last)"></div>
               </div>
 
               <div class="code-col col-xs-6">

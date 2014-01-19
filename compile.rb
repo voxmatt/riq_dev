@@ -1,4 +1,3 @@
-require 'rubygems'
 require 'json'
 
 ##############
@@ -9,7 +8,8 @@ $docDir = "documentation"
 # 2 Languages supported - language followed by file extension
 $languages = [
   ["curl", "curl"],
-  ["ruby", "rb"]
+  ["ruby", "rb"],
+  ["python", "py"]
 ]
 
 
