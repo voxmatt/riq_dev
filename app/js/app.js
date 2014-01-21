@@ -125,7 +125,6 @@ riqDevApp.directive('scrollTo', function($location) {
         attrs.spyClass = "active";
       }
       elem.click(function() {
-        console.log("Scrolled to" + attrs.scrollTo);
         $("body, html").scrollTop($("#" + attrs.scrollTo).offset().top);
       });
       scrollSpy.addSpy({
@@ -134,6 +133,8 @@ riqDevApp.directive('scrollTo', function($location) {
           elem.parent().addClass(attrs.spyClass);
           if (elem.closest("ul").hasClass("nav-subsection")){
             elem.closest(".nav-section").addClass("child-active");
+          } else{
+            $(".child-active").removeClass("child-active");
           }
           scope.$apply(function() {
             $location.hash(attrs.scrollTo);
@@ -141,9 +142,6 @@ riqDevApp.directive('scrollTo', function($location) {
         },
         out: function() {
           elem.parent().removeClass(attrs.spyClass);
-          if (elem.closest("ul").hasClass("nav-subsection")){
-            elem.closest(".nav-section").removeClass("child-active");
-          }
         }
       });
     }

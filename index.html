@@ -73,8 +73,8 @@
               <a scroll-to="{{section.link}}">
                 {{ section.title }}
               </a>
-              <ul class="nav nav-subsection">
-                <li ng-if="section.subSections" ng-repeat="subSection in section.subSections | filter:query" scroll-to="{{subSection.link}}">
+              <ul ng-if="section.subSections" class="nav nav-subsection">
+                <li ng-repeat="subSection in section.subSections | filter:query" scroll-to="{{subSection.link}}">
                   <a scroll-to="{{subSection.link}}">
                     {{ subSection.title }}
                   </a>
