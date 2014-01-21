@@ -6,6 +6,8 @@ riqDevApp.controller('ListCtrl', function($scope, $http, $location, $anchorScrol
 
   // Default language
   $defaultLang = "curl";
+  $scope.tokenID = "[API Token ID]";
+  $scope.tokenSecret = "[API Token Secret]";
 
   // Load data
   $http.get('app/data/docs.json', { cache: true}).success(function(data) {
@@ -130,12 +132,18 @@ riqDevApp.directive('scrollTo', function($location) {
         id: attrs.scrollTo,
         in: function() {
           elem.addClass(attrs.spyClass);
+          if (elem.parent().hasClass("nav-subsection")){
+            elem.closest(".nav-section").addClass("child-active");
+          }
           scope.$apply(function() {
             $location.hash(attrs.scrollTo);
           });
         },
         out: function() {
           elem.removeClass(attrs.spyClass);
+          if (elem.parent().hasClass("nav-subsection")){
+            elem.closest(".nav-section").removeClass("child-active");
+          }
         }
       });
     }

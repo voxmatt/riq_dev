@@ -71,10 +71,16 @@ def build_api_map(depth, currdir)
       puts "example"
 
       fileExt = filename.split(".")[1]
-
       $lang_key = ""
+
       $languages.each do |lang|
         $lang_key = lang[0] if fileExt == lang[1]
+      end
+
+      if fileExt == "default"
+        $lang_key = "default"
+      elsif $lang_key == ""
+        raise "Unsupported file type! Check example files to make sure they all have supported file extensions or 'default'"
       end
 
       map[$lang_key] = $docDir + File.expand_path(filename).split($docDir)[1]

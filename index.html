@@ -52,6 +52,7 @@
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->
+
   </nav>
 
   <aside>
@@ -62,15 +63,17 @@
 
       <ul id="sideNav" class="nav nav-pills nav-stacked">
         <div ng-repeat="superSection in docs.superSections | filter:query" ng-if="superSection.sections">
-          <li ng-class="{active:$first}" scroll-to="{{superSection.link}}">
+          <li class="nav-supersection" scroll-to="{{superSection.link}}">
             {{ superSection.title }}
           </li>
           <div ng-repeat="section in superSection.sections | filter:query">
-            <li scroll-to="{{section.link}}">
+            <li scroll-to="{{section.link}}" class="nav-section">
               {{ section.title }}
-            </li>
-            <li ng-if="section.subSections" ng-repeat="subSection in section.subSections | filter:query" scroll-to="{{subSection.link}}">
-              {{ subSection.title }}
+              <ul class="nav nav-subsection">
+                <li ng-if="section.subSections" ng-repeat="subSection in section.subSections | filter:query" scroll-to="{{subSection.link}}">
+                  {{ subSection.title }}
+                </li>
+              </ul>
             </li>
           </div>
         </div>
@@ -91,6 +94,23 @@
                 {{language}}
               </a>
             </li>
+            <li class="dropdown settings-toggle">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <span class="glyphicon glyphicon-cog"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <form class="navbar-form">
+                    <input type="text" class="form-control" ng-model="tokenID">
+                  </form>
+                </li>
+                <li>
+                  <form class="navbar-form">
+                    <input type="text" class="form-control"  ng-model="tokenSecret">
+                  </form>
+                </li>
+              </ul>
+            </li>
           </ul>
         </div>
       </div>
@@ -103,7 +123,8 @@
           </div>
 
           <div class="code-col col-xs-6">
-            <pre class="prettyprint" ng-if="superSection[langSlug] != '' " ng-include="superSection[langSlug]"></pre>
+            <pre class="prettyprint" ng-if="superSection[langSlug]" ng-include="superSection[langSlug]"></pre>
+            <pre class="prettyprint" ng-if="!superSection[langSlug] && superSection.default" ng-include="superSection.default"></pre>
             &nbsp;
           </div>
 
@@ -121,7 +142,8 @@
             </div>
 
             <div class="code-col col-xs-6">
-              <pre class="prettyprint" ng-if="section[langSlug] != '' " ng-include="section[langSlug]"></pre>
+              <pre class="prettyprint" ng-if="section[langSlug]" ng-include="section[langSlug]"></pre>
+              <pre class="prettyprint" ng-if="!section[langSlug] && section.default" ng-include="section.default"></pre>
               &nbsp;
             </div>
 
@@ -129,23 +151,22 @@
 
           </div>
 
-          <div ng-show="section.subSections != '' ">
 
-            <div class="sub-section" ng-repeat="subSection in section.subSections" id="{{subSection.link}}" class="row">
-              
-              <div class="desc-col col-xs-6">
-                <h2>{{ subSection.title }}</h2>
-                <div ng-include="subSection.description" onload="lastLoad($last)"></div>
-              </div>
-
-              <div class="code-col col-xs-6">
-                <pre class="prettyprint" ng-if="subSection[langSlug] != '' " ng-include="subSection[langSlug]"></pre>
-                &nbsp;
-              </div>
-
-              <div class="clearfix"></div>
-
+          <div class="sub-section" ng-if="section.subSections != ''" ng-repeat="subSection in section.subSections" id="{{subSection.link}}" class="row">
+            
+            <div class="desc-col col-xs-6">
+              <h2>{{ subSection.title }}</h2>
+              <div ng-include="subSection.description" onload="lastLoad($last)"></div>
             </div>
+
+            <div class="code-col col-xs-6">
+              <pre class="prettyprint" ng-if="subSection[langSlug]" ng-include="subSection[langSlug]"></pre>
+              <pre class="prettyprint" ng-if="!subSection[langSlug] && subSection.default" ng-include="subSection.default"></pre>
+              &nbsp;
+            </div>
+
+            <div class="clearfix"></div>
+
           </div>
 
         </div>

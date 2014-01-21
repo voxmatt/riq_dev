@@ -3,7 +3,7 @@ GET https://app.relateiq.com/api/v1/entitylists/{listids}
 
 REQUEST EXAMPLE
 curl -X GET https://app.relateiq.com/api/v1/entitylists/3ebd05233434b301d30b6788,3ebd05393434b301d30a6788 \
-  -u apitoken:[apitoken] \
+  -u apitoken:<span class="nocode">{{tokenID}}</span> \
   -d "excludeMembers=true"
 
 EXAMPLE RESPONSE

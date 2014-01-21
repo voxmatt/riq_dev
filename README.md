@@ -13,13 +13,18 @@ Code for developer.relateiq.com
 ### Settings
 
 - All settings are at the top of the compile file: 'compile.rb'. Explanation of the settings is found there as well.
-- Otherwise, simply update the documentation by adding or changing documents in the 'documentation' directory
+
+### Updating Documentation
+
+- Simply add or change documents in the 'documentation' directory
 - Order of sections is handled by prepending numbers to the directories. E.g., '01-API'
 - First level directories are super-sections, second level are sections, third level are sub-sections
 - Each directory can have one 'explanation.html' file
 - Each directory can have as many example files as there are supported languages. E.g., 'example.curl', 'example.rb', 'example.py', etc.
+- Each directory can have one 'example.default' file. This file will be the fallback example if the user selects a language and that section has no language specific example.
+- For dynamic API Token ID values, insert '<span class="nocode">{{tokenID}}</span>'
+- For dynamic API Token Secret values, insert '<span class="nocode">{{tokenID}}</span>'
 - **remember to run 'ruby compile.rb' after updating documentation**
-
 
 ### Styles
 

@@ -3,7 +3,7 @@ GET https://app.relateiq.com/api/v1/entitylists/{listid}/search?name=[name to fi
 
 EXAMPLE REQUEST
 curl -X GET https://app.relateiq.com/api/v1/entitylists/3ebd05233434b301d30b6788/search?name=techqueria \
-  -u apitoken:[apitoken]
+  -u apitoken:<span class="nocode">{{tokenID}}</span>
 
 EXAMPLE RESPONSE
 {

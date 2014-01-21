@@ -73,8 +73,7 @@
         }
       ],
       "description": "documentation/01-API/description.html",
-      "curl": "documentation/01-API/example.curl",
-      "ruby": "documentation/01-API/example.rb"
+      "default": "documentation/01-API/example.default"
     },
     {
       "title": "Methods",
