@@ -131,8 +131,8 @@ riqDevApp.directive('scrollTo', function($location) {
       scrollSpy.addSpy({
         id: attrs.scrollTo,
         in: function() {
-          elem.addClass(attrs.spyClass);
-          if (elem.parent().hasClass("nav-subsection")){
+          elem.parent().addClass(attrs.spyClass);
+          if (elem.closest("ul").hasClass("nav-subsection")){
             elem.closest(".nav-section").addClass("child-active");
           }
           scope.$apply(function() {
@@ -140,8 +140,8 @@ riqDevApp.directive('scrollTo', function($location) {
           });
         },
         out: function() {
-          elem.removeClass(attrs.spyClass);
-          if (elem.parent().hasClass("nav-subsection")){
+          elem.parent().removeClass(attrs.spyClass);
+          if (elem.closest("ul").hasClass("nav-subsection")){
             elem.closest(".nav-section").removeClass("child-active");
           }
         }
